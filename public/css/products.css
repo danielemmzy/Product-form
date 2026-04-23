@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* =========================
+   BASE
+========================= */
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0b0f14;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container {
+    max-width: 1100px;
+}
+
+/* =========================
+   TITLE
+========================= */
+h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: -0.5px;
+    background: linear-gradient(90deg, #00ff9d, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* =========================
+   FORM
+========================= */
+form {
+    background: rgba(255, 255, 255, 0.04);
+    padding: 25px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+}
+
+.table .form-control {
+    background: #111820 !important;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #ffffff !important;
+    font-weight: 500;
+}
+
+.table .form-control:focus {
+    background: #151d26 !important;
+    color: #ffffff !important;
+    border-color: #00ff9d;
+    box-shadow: 0 0 0 3px rgba(0,255,157,0.15);
+}
+
+/* Fix placeholder visibility */
+.table .form-control::placeholder {
+    color: #888;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.btn-primary {
+    background: linear-gradient(90deg, #00ff9d, #00d4ff);
+    border: none;
+    color: #000;
+    font-weight: 700;
+    padding: 12px 20px;
+    border-radius: 50px;
+    transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(0,255,157,0.25);
+}
+
+/* =========================
+   TABLE
+========================= */
+.table {
+    background: transparent;
+    color: white;
+    margin-top: 20px;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+/* HEADER */
+.table thead th {
+    border: none;
+    color: #aaa;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding-bottom: 15px;
+}
+
+/* ROWS */
+.table tbody tr {
+    background: rgba(255,255,255,0.04);
+    transition: 0.2s ease;
+    border-radius: 12px;
+}
+
+.table tbody tr:hover {
+    background: rgba(0,255,157,0.05);
+    transform: scale(1.01);
+}
+
+/* CELLS */
+.table td {
+    padding: 16px;
+    border: none;
+    font-size: 1.05rem;
+    vertical-align: middle;
+}
+
+/* =========================
+   PRODUCT COLUMNS
+========================= */
+.col-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.col-qty {
+    font-weight: 500;
+    color: #cbd5e1;
+}
+
+.col-price {
+    color: #00ff9d;
+    font-weight: 600;
+}
+
+.col-total {
+    font-weight: 700;
+    color: #00d4ff;
+}
+
+/* =========================
+   GRAND TOTAL
+========================= */
+tfoot th {
+    font-size: 1.3rem;
+    padding-top: 20px;
+    border-top: 2px solid rgba(255,255,255,0.1);
+}
+
+#grand {
+    color: #00ff9d;
+    font-size: 1.4rem;
+}
+
+/* =========================
+   ACTION BUTTON
+========================= */
+.btn-warning {
+    background: transparent;
+    border: 1px solid #00d4ff;
+    color: #00d4ff;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-weight: 600;
+}
+
+.btn-warning:hover {
+    background: #00d4ff;
+    color: #000;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    .table td {
+        font-size: 0.95rem;
+    }
+}

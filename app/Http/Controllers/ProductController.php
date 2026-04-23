@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Product;
 use App\Services\ProductService;
+use Illuminate\Http\Request;
 
-/**
- * Handles HTTP requests only.
- * Business logic is delegated to ProductService.
- */
 class ProductController extends Controller
 {
     private ProductService $service;
@@ -19,40 +16,36 @@ class ProductController extends Controller
     }
 
     /**
-     * Load main page with products
+     * Show page
      */
     public function index()
     {
-        $products = $this->service->getAll();
-
+        $products = Product::orderBy('created_at', 'asc')->get();
         return view('products', compact('products'));
     }
 
     /**
-     * Store new product via AJAX
+     * Store product via AJAX
      */
     public function store(Request $request)
     {
         $request->validate([
             'product_name' => 'required|string',
-            'quantity'     => 'required|integer|min:0',
-            'price'        => 'required|numeric|min:0',
+            'quantity' => 'required|integer',
+            'price' => 'required|numeric',
         ]);
 
-        $product = [
-            'id'           => time(),
+        $product = Product::create([
             'product_name' => $request->product_name,
-            'quantity'     => (int) $request->quantity,
-            'price'        => (float) $request->price,
-            'total'        => $request->quantity * $request->price,
-            'created_at'   => now()->format('Y-m-d H:i:s'),
-        ];
+            'quantity' => $request->quantity,
+            'price' => $request->price,
+        ]);
 
-        $products = $this->service->add($product);
+        $this->service->syncToJson();
 
         return response()->json([
             'success' => true,
-            'products' => $products
+            'product' => $product
         ]);
     }
 
@@ -61,18 +54,19 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = [
-            'product_name' => $request->product_name,
-            'quantity'     => (int) $request->quantity,
-            'price'        => (float) $request->price,
-            'total'        => $request->quantity * $request->price,
-        ];
+        $product = Product::findOrFail($id);
 
-        $products = $this->service->update($id, $data);
+        $product->update([
+            'product_name' => $request->product_name,
+            'quantity' => $request->quantity,
+            'price' => $request->price,
+        ]);
+
+        $this->service->syncToJson();
 
         return response()->json([
             'success' => true,
-            'products' => $products
+            'product' => $product
         ]);
     }
 }
