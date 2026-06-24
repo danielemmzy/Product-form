@@ -10,7 +10,7 @@
 
 <div class="container">
 
-    <h3>Product Inventory</h3>
+    <h3>Product Inventories</h3>
 
     <!-- FORM -->
     <form id="productForm" class="mb-3">
